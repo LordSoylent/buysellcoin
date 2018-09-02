@@ -346,7 +346,6 @@ void OverviewPage::updateDarksendProgress()
         ui->darksendProgress->setValue(0);
         ui->darksendProgress->setToolTip(tr("No inputs detected"));
         // when balance is zero just show info from settings
-        strAnonymizeBuysellcoinAmount = strAnonymizeBuysellcoinAmount.remove(strAnonymizeBuysellcoinAmount.indexOf("."), BitcoinUnits::decimals(nDisplayUnit) + 1);
         strAmountAndRounds = strAnonymizeBuysellcoinAmount + " / " + tr("%n Rounds", "", nDarksendRounds);
 
         ui->labelAmountRounds->setToolTip(tr("No inputs detected"));
@@ -382,7 +381,6 @@ void OverviewPage::updateDarksendProgress()
     if(nMaxToAnonymize >= nAnonymizeBuysellcoinAmount * COIN) {
         ui->labelAmountRounds->setToolTip(tr("Found enough compatible inputs to anonymize %1")
                                           .arg(strAnonymizeBuysellcoinAmount));
-        strAnonymizeBuysellcoinAmount = strAnonymizeBuysellcoinAmount.remove(strAnonymizeBuysellcoinAmount.indexOf("."), BitcoinUnits::decimals(nDisplayUnit) + 1);
         strAmountAndRounds = strAnonymizeBuysellcoinAmount + " / " + tr("%n Rounds", "", nDarksendRounds);
     } else {
         QString strMaxToAnonymize = BitcoinUnits::formatHtmlWithUnit(nDisplayUnit, nMaxToAnonymize, false, BitcoinUnits::separatorAlways);
